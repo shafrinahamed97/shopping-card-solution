@@ -57,12 +57,25 @@ function updateCaseTotalPrice(newCaseNumber)
  const caseTotalElement = document.getElementById('case-total');
  caseTotalElement.innerText  =caseTotalPrice;
 }
+function calculateSubTotal()
+{
+      // calculate total
+   const currentPhoneTotal = getTextElementValueById('phone-total');
+   const currentCaseTotal  = getTextElementValueById('case-total');
+   const currentSubTotal = currentPhoneTotal + currentCaseTotal;
+   
+
+   const subTotalElement = document.getElementById('sub-total');
+   subTotalElement.innerText = currentSubTotal;
+
+}
 
 document.getElementById('btn-case-plus').addEventListener('click', function()
 {
    const newCaseNumber = updateCaseNumber(true);
 
    updateCaseTotalPrice(newCaseNumber);
+   calculateSubTotal();
 
 //    const caseTotalPrice = newCaseNumber *59;
 //    const caseTotalElement = document.getElementById('case-total');
@@ -76,6 +89,7 @@ document.getElementById('btn-case-minus').addEventListener('click', function(){
 //  caseTotalElement.innerText  =caseTotalPrice;
 
 updateCaseTotalPrice(newCaseNumber);
+calculateSubTotal();
 
 
 })
